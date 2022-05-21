@@ -6,7 +6,8 @@
 цвет контактов rgba(255, 255, 255, 0.6)
 цвет рамок и иконок #AFB1B8
 фон цвета фильтра #F5F4FA
-фон лейбы затемненный rgba(47, 48, 58, 0.8)*/
+фон лейбы затемненный rgba(47, 48, 58, 0.8)
+фунткция транформации и время 250ms cubic-bezier(0.4, 0, 0.2, 1)*/
 
 :root {
   --primary-text-color: #212121;
@@ -19,6 +20,7 @@
   --card-set-gap: 30px;
   --icon-border: #afb1b8;
   --font-label: rgba(47, 48, 58, 0.8);
+  --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Главная старинца "Студия" */
@@ -153,6 +155,8 @@ img {
 
   color: var(--primary-text-color);
   text-decoration: none;
+
+  transition: color var(--timing-function);
 }
 
 .menu .link:hover,
@@ -171,7 +175,7 @@ img {
   position: absolute;
   width: 100%;
   height: 4px;
-  bottom: 0;
+  bottom: -1px;
   right: 0;
 
   border-radius: 4px;
@@ -185,12 +189,12 @@ img {
 
   color: var(--secondary-text-color);
   text-decoration: none;
+
+  transition: color var(--timing-function);
 }
 
 .contacts .contacts-company:hover,
-.contacts .contacts-company:focus,
-.contact-in-footer:hover,
-.contact-in-footer:focus {
+.contacts .contacts-company:focus {
   color: var(--accent-color);
 }
 
@@ -255,6 +259,8 @@ img {
   letter-spacing: 0.06em;
 
   cursor: pointer;
+
+  transition: background-color var(--timing-function);
 }
 
 .primery .order-service:hover,
@@ -391,7 +397,6 @@ img {
 
 .social-network-list {
   display: flex;
-  /* margin-right: -10px; */
 }
 
 .social-network-list .social-network:not(:last-child) {
@@ -405,18 +410,25 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+
+  background-color: var(--color-white-text);
+
+  transition: background-color var(--timing-function);
 }
 
 .socials-more:hover,
-.socials-more:focus,
+.socials-more:focus {
+  background-color: var(--accent-color);
+}
 .socials-more:hover .icon-team,
 .socials-more:focus .icon-team {
-  background-color: var(--accent-color);
   fill: var(--color-white-text);
 }
 
 .icon-team {
   fill: var(--icon-border);
+
+  transition: fill var(--timing-function);
 }
 
 /* Постоянные клиенты */
@@ -430,14 +442,6 @@ img {
   margin-right: var(--card-set-gap);
 }
 
-.clients-item .client-logo-container:hover,
-.clients-item .client-logo-container:focus,
-.clients-item .client-logo-container:hover .icon-clients,
-.clients-item .client-logo-container:focus .icon-clients {
-  border-color: var(--accent-color);
-  fill: var(--accent-color);
-}
-
 .clients-item .client-logo-container {
   display: flex;
   padding: 16px 32px;
@@ -447,10 +451,22 @@ img {
 
   border: 1px solid var(--icon-border);
   border-radius: 4px;
+
+  transition: border var(--timing-function);
 }
 
 .icon-clients {
   fill: rgba(175, 177, 184, 1);
+
+  transition: fill var(--timing-function);
+}
+
+.clients-item .client-logo-container:hover,
+.clients-item .client-logo-container:focus,
+.clients-item .client-logo-container:hover .icon-clients,
+.clients-item .client-logo-container:focus .icon-clients {
+  border-color: var(--accent-color);
+  fill: var(--accent-color);
 }
 
 /* Футер */
@@ -488,6 +504,11 @@ img {
 
   color: var(--color-white-text);
 }
+
+.contact-footer-list:not(:last-child) {
+  margin-bottom: 9px;
+}
+
 .contact-in-footer {
   text-decoration: none;
   font-style: normal;
@@ -495,9 +516,16 @@ img {
   line-height: 1.5;
 
   color: var(--contact-in-footer);
+
+  transition: color var(--timing-function);
 }
 
-.contact-footer-list:not(:last-child) {
+.contact-in-footer:hover,
+.contact-in-footer:focus {
+  color: var(--accent-color);
+}
+
+.contact-in-footer.mail {
   margin-bottom: 9px;
 }
 
@@ -519,7 +547,7 @@ img {
   margin-right: 10px;
 }
 
-.socials-mpre-footer {
+.socials-more-footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -530,14 +558,13 @@ img {
   border-radius: 50%;
 
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: background-color var(--timing-function);
 }
 
-.socials-mpre-footer:hover,
-.socials-mpre-footer:focus,
-.socials-mpre-footer:hover .icon-team,
-.socials-mpre-footer:focus .icon-team {
+.socials-more-footer:hover,
+.socials-more-footer:focus {
   background-color: var(--accent-color);
-  fill: var(--color-white-text);
 }
 
 .icon-footer {
@@ -545,10 +572,6 @@ img {
   align-items: center;
   justify-content: center;
   fill: var(--color-white-text);
-}
-
-.contact-in-footer.mail {
-  margin-bottom: 9px;
 }
 
 /* Стилизация Портфолио */
@@ -580,6 +603,9 @@ img {
 
   border: 1px solid var(--font-color-filter);
   border-radius: 4px;
+
+  transition: background-color var(--timing-function), border var(--timing-function),
+    color var(--timing-function), box-shadow var(--timing-function);
 }
 
 .filter-button .filter-menu:hover,
@@ -613,6 +639,8 @@ img {
 .project-linck {
   display: block;
   text-decoration: none;
+
+  transition: box-shadow var(--timing-function);
 }
 
 .project-container .project-linck:hover,
@@ -622,32 +650,39 @@ img {
 
 .project-linck .project-block-img {
   position: relative;
+  overflow: hidden;
 }
 
-.project-block-img .project-description {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.project-block-img .project-overlay {
+  content: '';
   position: absolute;
+  display: block;
   width: 100%;
   height: 100%;
+  top: 0;
   left: 0;
-  bottom: -100%;
-  padding: 0 24px;
-  opacity: 0;
 
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 1.6;
+  transform: translateY(100%);
+
+  transition: transform var(--timing-function);
 
   background: rgba(33, 150, 243, 0.9);
-  color: #ffffff;
 }
 
-.project-container .project-linck:hover .project-description,
-.project-container .project-linck:focus .project-description {
-  opacity: 1;
-  bottom: 0;
+.project-container .project-linck:hover .project-overlay,
+.project-container .project-linck:focus .project-overlay {
+  transform: translateY(0);
+}
+
+.project-overlay .project-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-white-text);
 }
 
 .class-project {
@@ -688,11 +723,19 @@ img {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+
+  transition: opacity var(--timing-function), pointer-events var(--timing-function),
+    visibility var(--timing-function);
 }
 
 .backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .backdrop .modal {
